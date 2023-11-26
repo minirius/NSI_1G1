@@ -5,8 +5,9 @@
 # Petit jeu de Guerre de pixel en multijoueur (sans identification de joueur)
 #######################################################
 import collections
-from turtle import *
-from tkinter import messagebox, Toplevel, Label, Button
+from turtle import Turtle, clear, goto, stamp, write, ontimer, Screen, shape, up, tracer, color, textinput, onscreenclick, mainloop, listen, title
+#from turtle import *
+from tkinter import messagebox
 import requests
 
 #Definition de la taille du canva (à modifier sur le serveur par la suite)
