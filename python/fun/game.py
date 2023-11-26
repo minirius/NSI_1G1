@@ -49,7 +49,11 @@ def did_win():
     return did_win
 
 def search_for_events():
-    return False
+    for a in range(taille**2):
+        x, y = a//taille, a%taille
+        if(grille[x][y] == couleur):
+            if(grille[x-1][y] == couleur and grille[x+1][y] == couleur and grille[x][y-1] == couleur and grille[x][y+1] == couleur):
+                print("Etoile les gars")
 
 #Fonction Update Grille, 
 def updateGrille():
