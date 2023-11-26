@@ -38,7 +38,7 @@ def did_win():
     best = count_point()[0]
     if(best[0] == "white"):
         best = count_point()[1]
-    if(round((best[1]/(30*30))*100, 1) >= 5.0):
+    if(round((best[1]/(30*30))*100, 1) >= 50.0):
         did_win = True
         winner = color_list[best[0]]
         textTurtle.clear()
