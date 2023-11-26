@@ -1,0 +1,5 @@
+SET var1 : hello
+SET var2 : hello
+SHOW #var1
+SHOW #var2
+TEST mytest #var1 == #var2
