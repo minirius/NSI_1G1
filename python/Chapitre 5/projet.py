@@ -11,6 +11,7 @@ import math
 COLORS = ["RoyalBlue", "burlywood1", "Cornflowerblue", "DarkOrange", "DarkSeaGreen1", "lightCyan", "firebrick1", "slateBlue2"]
 
 def trait(x1, y1, x2, y2, pensize=1):
+    turtle.pensize(pensize)
     turtle.goto(x1, y1)
     turtle.pendown()
     turtle.goto(x2, y2)
@@ -75,16 +76,21 @@ def fenetre_balcon(x, y):
         rectangle(x-18+i, y, w=6, h=25, color="transparent", pensize=2)
 
 def porte(x, y, couleur="white"):
-    if(random.choice([1, 1]) == 1):
+    if(random.choice([1, 0]) == 1):
         rectangle(x-15, y, w=30, h=55, color=couleur)
     else:
-        rectangle(x-15, y, w=30, h=40, color=couleur)
         turtle.fillcolor(couleur)
-        turtle.goto(x-15, y+40)
+        turtle.goto(x-15, y)
         turtle.pendown()
         turtle.begin_fill()
-        turtle.right(90)
+        turtle.setheading(90)
+        turtle.forward(40)
+        turtle.setheading(270)
         turtle.circle(15, -180)
+        turtle.setheading(270)
+        turtle.forward(40)
+        turtle.setheading(180)
+        turtle.forward(30)
         turtle.end_fill()
         turtle.penup()
         turtle.setheading(0)
@@ -131,10 +137,9 @@ def main():
     turtle.tracer(0)
     turtle.Screen().setup(900, 600)
     SOL = -150
-    sol(SOL)
     for i in range(0, 4):
         immeuble(i*200 - 300, SOL)
-
+    sol(SOL)
     # On ferme la fenêtre s'il y a un clique gauche
     turtle.exitonclick()
 
