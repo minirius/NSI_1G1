@@ -10,9 +10,6 @@ import math
 
 COLORS = ["RoyalBlue", "burlywood1", "Cornflowerblue", "DarkOrange", "DarkSeaGreen1", "lightCyan", "firebrick1", "slateBlue2"]
 
-def couleur_aleatoire():
-    liste_couleur = ["RoyalBlue", "grey20", "green2", "red1", "BlueViolet"]
-    return random.choice(liste_couleur)
 def trait(x1, y1, x2, y2, pensize=1):
     turtle.goto(x1, y1)
     turtle.pendown()
