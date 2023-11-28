@@ -8,7 +8,6 @@ import turtle
 import random
 import math
 
-COLORS = ["RoyalBlue", "burlywood1", "Cornflowerblue", "DarkOrange", "DarkSeaGreen1", "lightCyan", "firebrick1", "slateBlue2"]
 
 def trait(x1, y1, x2, y2, pensize=1):
     turtle.pensize(pensize)
@@ -119,7 +118,8 @@ def etage(x, y_sol, couleur, niveau):
             fenetre_balcon((x-70)+i*35, y_sol+niveau*60)
 
 def immeuble(x, y_sol):
-    global COLORS
+
+    COLORS = ["RoyalBlue", "burlywood1", "Cornflowerblue", "DarkOrange", "DarkSeaGreen1", "lightCyan", "firebrick1", "slateBlue2"]
     color = random.choice(COLORS)
     COLORS.remove(color)
     color2 = random.choice(COLORS)
