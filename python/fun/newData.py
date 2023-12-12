@@ -6,12 +6,14 @@ x, X = 10, [[0, 60], [1, 10], [2, 40], [3, 20], [4, 80], [5, 0], [6, 30], [7, 70
 order = len(X)
 
 def ReadFile():
+    #Read the coef
     global x, X
     x, X = 10, [[0, 60], [1, 10], [2, 40], [3, 20], [4, 80], [5, 0], [6, 30], [7, 70], [8, 40], [9, 90]]
     return True
     None
 
 def StoreFile():
+    #Store only the coef
     return True
     None
 
