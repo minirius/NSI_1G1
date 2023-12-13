@@ -2,15 +2,25 @@ import numpy as np
 from pypoly import Polynomial
 import matplotlib.pyplot as plt
 
+##Eval() => retourne l'objet ou la fonction d'une string
+
 x, X = 10, [[0, 60], [1, 10], [2, 40], [3, 20], [4, 80], [5, 0], [6, 30], [7, 70], [8, 40], [9, 90]]
 order = len(X)
+
+DATA_SET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOQSTUVWXYZ0123456789=/!()"
 
 def ReadFile():
     #Read the coef
     global x, X
-    x, X = 10, [[0, 60], [1, 10], [2, 40], [3, 20], [4, 80], [5, 0], [6, 30], [7, 70], [8, 40], [9, 90]]
+    X = []
+    file = open("data.txt", "rw") 
+    for index, element in enumerate(file.read()):
+        newY = DATA_SET.find(element)
+        newX = index
+        X.append([newX, newY])
+
+    x = len(X)
     return True
-    None
 
 def StoreFile():
     #Store only the coef
