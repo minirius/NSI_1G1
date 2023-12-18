@@ -13,6 +13,6 @@ def texte_tranforme(text):
             listFinal.append(newWord)
         else:
             listFinal.append(word)
-    return listFinal
+    return " ".join(listFinal)
 
-print(texte_tranforme("Bonjour je pense que l'homme"))
+print(texte_tranforme("Bonjour je pense que l'homme est un animal très bouleversant pour son environnement"))
