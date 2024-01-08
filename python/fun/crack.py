@@ -14,7 +14,7 @@ def brute(n):
                 print(ALPHABET[i]+ALPHABET[j]+ALPHABET[k])'''
     
     for i in range(len(ALPHABET) ** n):
-        x = i % (len(ALPHABET) - 1)
+        x = i // (len(ALPHABET) - 1)
         y = x % (len(ALPHABET) - 1)
         z = y % (len(ALPHABET) - 1)
         print(x, y, z)
@@ -29,4 +29,4 @@ def brute(n):
         exit()'''
 
 brute(3)
-##keyboard.unhook_all()b
+##keyboard.unhook_all()
