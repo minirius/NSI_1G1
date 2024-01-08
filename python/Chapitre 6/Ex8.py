@@ -1,3 +1,5 @@
-int(number)
+binaire = bin(0xEFBFBD)
+print(binaire)
 
-print(chr(0XBF))
+binaire_transfo = list(binaire)
+del binaire_transfo[0:6]

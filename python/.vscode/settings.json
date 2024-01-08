@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./Chapitre 3",
+        "./Chapitre 6",
+        "./Chapitre 5",
+        "./fun"
+    ],
+    "python.analysis.typeCheckingMode": "off"
+}
