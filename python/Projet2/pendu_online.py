@@ -3,6 +3,7 @@ import os
 from tkinter import Tk, font, StringVar, Canvas
 from tkinter.ttk import Button, Label, Entry
 from PIL import ImageTk, Image
+import socket
 
 MOT = ""
 ETAT = []
