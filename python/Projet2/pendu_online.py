@@ -2,8 +2,6 @@ import random
 import os
 from tkinter import Tk, font, StringVar, Canvas
 from tkinter.ttk import Button, Label, Entry
-from PIL import ImageTk, Image
-import socket
 
 MOT = ""
 ETAT = []
@@ -114,8 +112,6 @@ class App:
             self.canvas.create_line((300, 230), (325, 300), fill="black", width=5)
         if(NBR_ERREUR == 10):
             self.canvas.create_line((250, 160), (350, 160), fill="black", width=5)
-
-
 
 def nouvel_etat(lettre):
     global MOT, ETAT, WIN
