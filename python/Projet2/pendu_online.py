@@ -146,5 +146,6 @@ def main():
     root.title("Pendu Graphique")
     app = App(root)
     root.mainloop()
+    
 if __name__ == "__main__":
     main()
