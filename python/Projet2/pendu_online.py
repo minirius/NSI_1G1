@@ -2,6 +2,10 @@ import random
 import os
 from tkinter import Tk, font, StringVar, Canvas
 from tkinter.ttk import Button, Label, Entry
+import requests
+import socket
+import time
+from threading import Thread
 
 MOT = ""
 ETAT = []
@@ -9,6 +13,11 @@ NBR_ERREUR = 0
 LISTE_DEJA_FAIT = []
 LISTE_DEJA_FAIT_TOTAL = []
 WIN = False
+
+
+LIST_PLAYER = []
+ROOM = random.randint(0, 10000)
+PLAYER = []
 
 VARIANTE = {
     'A' : 'AÀÄÂÆ',
@@ -18,6 +27,31 @@ VARIANTE = {
     'O' : 'OÔÖŒ',
     'U' : 'UÙÜÛ'
 }
+
+def updateAPI():
+    response = requests.get("https://vibechat.fr/api/game_api.php?get")
+
+def isPing():
+    response = requests.get("https://vibechat.fr/api_jeux/game.php?get")
+    index = 0
+    selected = False
+    for element in response.text.strip().split(';'):
+        if(element != ""):
+            if(elements[0] == IP):
+                print("I WAS SELECTED")
+                selected = True
+    if(not selected): isPing()
+            
+
+def playerList():
+    response = requests.get("https://vibechat.fr/api_jeux/listPlayer.php?get")
+    index = 0
+    for element in response.text.strip().split(';'):
+        if(element != "" and element.split(":")[0] != IP):
+            elements = element.split(":")
+            print("["+str(index)+"] > ", elements[1], ":", elements[0])
+            LIST_PLAYER.append(elements)
+            index+=1
 
 class App:
     def __init__(self, master):
@@ -137,15 +171,42 @@ def selectionner_mot():
     return MOT, ETAT
 
 def main():
-    global WIN, LISTE_DEJA_FAIT, NBR_ERREUR
+    global WIN, LISTE_DEJA_FAIT, NBR_ERREUR, NAME, PLAYER, LIST_PLAYER, IP
     selectionner_mot()
     print(MOT)
+
+
+    IP = socket.gethostbyname(socket.gethostname())
+    print(IP)
+    NAME = input("Votre nom: ")
+    response = requests.get("https://vibechat.fr/api_jeux/listPlayer.php?add&name="+NAME+"&ip="+IP)
+
+
+    playerList()
+    selectedPlayer = int(input("-> "))
+    PLAYER = LIST_PLAYER[selectedPlayer]
+    print(PLAYER)
+
+    response = requests.get("https://vibechat.fr/api_jeux/game.php?add&name="+NAME+"&ip="+IP+"&room="+str(ROOM)+"&word="+MOT+"&state="+"".join(ETAT))
+    time.sleep(0.5)
+    response = requests.get("https://vibechat.fr/api_jeux/game.php?add&name="+PLAYER[1]+"&ip="+PLAYER[0]+"&room="+str(ROOM)+"&word="+MOT+"&state="+"".join(ETAT))
+    time.sleep(0.5)
+
+    response = requests.get("https://vibechat.fr/api_jeux/listPlayer.php?remove&ip="+IP)
+    time.sleep(0.5)
+    response = requests.get("https://vibechat.fr/api_jeux/listPlayer.php?remove&ip="+PLAYER[0])
+    time.sleep(0.5)
+
     root = Tk()
     root.minsize(400, 600)
     root.maxsize(400, 600)
     root.title("Pendu Graphique")
     app = App(root)
     root.mainloop()
-    
+
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    finally:
+        response = requests.get("https://vibechat.fr/api_jeux/listPlayer.php?remove&ip="+IP)
+        response = requests.get("https://vibechat.fr/api_jeux/game.php?remove&ip="+IP)

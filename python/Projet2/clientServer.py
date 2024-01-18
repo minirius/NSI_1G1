@@ -5,7 +5,7 @@ def Main():
     host='192.168.230.112' #client ip
     port = 4005
     
-    server = ('192.168.230.112', 4000)
+    server = ('192.168.228.15', 4000)
     
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.bind((host,port))
