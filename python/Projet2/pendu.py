@@ -1,5 +1,6 @@
 import random
 import os
+import sys
 from tkinter import Tk, font, StringVar, Canvas
 from tkinter.ttk import Button, Label, Entry
 from PIL import ImageTk, Image
@@ -19,6 +20,7 @@ VARIANTE = {
     'O' : 'OÔÖŒ',
     'U' : 'UÙÜÛ'
 }
+VALID_LETTERS = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBNàäâæçeéèêëæœîïôöœùüûÀÄÂÆÇEÉÈÊËÆŒÎÏÔÖŒÙÜÛ"
 
 class App:
     def __init__(self, master):
@@ -64,7 +66,7 @@ class App:
         if(len(lettre) >= 2):
             self.errorvar.set("Veuillez entrer une lettre seulement !")
             return
-        if(lettre.isdigit()):
+        if(not (lettre in VALID_LETTERS)):
             self.errorvar.set("Veuillez entrer un caractère valide !")
             return
         if(lettre in LISTE_DEJA_FAIT_TOTAL):
@@ -134,7 +136,10 @@ def nouvel_etat(lettre):
 
 def selectionner_mot():
     global MOT, ETAT
-    f = open("./python/Projet2/littre.txt","r", encoding="UTF-8")
+    if getattr(sys, 'frozen', False):
+        f = open(os.path.join(sys._MEIPASS, "files/littre.txt"),"r", encoding="UTF-8")
+    else:
+        f = open("./python/Projet2/littre.txt","r", encoding="UTF-8")
     MOT = random.choice(f.readlines()).strip()
     ETAT = ["_" for i in MOT]
     return MOT, ETAT
