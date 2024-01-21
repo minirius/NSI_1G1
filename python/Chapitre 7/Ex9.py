@@ -1,13 +1,11 @@
 import random
+import math
 
-HEIGHT = random.randint(1, 15)
-WIDTH = random.randint(1, 15)
 
-tableau_ligne = [random.randint(0, 100) for i in range(HEIGHT*WIDTH)]
-print(tableau_ligne)
+tableau_ligne = [random.randint(0, 100) for i in range(365)]
 
-tableau = [[tableau_ligne[i+j*WIDTH] for i in range(WIDTH)] for j in range(HEIGHT)]
-
+SIZE = int(math.sqrt(len(tableau_ligne))) if math.sqrt(len(tableau_ligne)) == int(math.sqrt(len(tableau_ligne))) else int(math.sqrt(len(tableau_ligne))+1)
+tableau = [[tableau_ligne[i+j*SIZE] if i+j*SIZE < len(tableau_ligne) else 0 for i in range(SIZE)] for j in range(SIZE)]
 
 for sub in tableau:
     for e in sub:
