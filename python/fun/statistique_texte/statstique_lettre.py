@@ -30,7 +30,7 @@ def get_next_letter(liste, lettre):
     maxLetter = ""
     maxNum = 0
     for e in liste[lettre]:
-        if maxNum < liste[lettre][e] and random.randint(0, 10) < 5:
+        if maxNum < liste[lettre][e] and random.randint(0, 10) < 6:
             maxLetter = e
             maxNum = liste[lettre][e]
     return maxLetter
@@ -39,7 +39,7 @@ if(__name__ == "__main__"):
     os.chdir(os.getcwd()+'/python/fun/statistique_texte')
     texte = open("livre1.txt", mode='r', encoding='UTF-8')
     proba = get_letter_probability(texte.read())
-    phrase = "Je disais souvent "
+    phrase = "Je disais souvent que"
     for i in range(500):
         phrase += get_next_letter(proba, phrase[-1])
     print(phrase)
