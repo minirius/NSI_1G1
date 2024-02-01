@@ -27,15 +27,24 @@ def get_next_world(liste, mot):
             maxNum = liste[mot][e]
     return maxLetter
 
+def get_next_commun_world(liste, mot, motAvant):
+    maxLetter = ""
+    maxNum = 0
+    for e in liste[mot]:
+        if maxNum < liste[mot][e] and random.randint(0, 10) < 11:
+            maxLetter = e
+            maxNum = liste[mot][e]
+    return maxLetter
+
 def save_data(data):
-    file = open(FILE_NAME+".learned", "w", encoding='UTF-8') 
+    file = open("learned/"+FILE_NAME+".learned", "w", encoding='UTF-8') 
     file.write(str(data)) 
     file.close() 
 
 def search_data():
     proba = []
-    if(os.path.exists(FILE_NAME+".learned")):
-        file = open(FILE_NAME+".learned", "r", encoding='UTF-8') 
+    if(os.path.exists("learned/"+FILE_NAME+".learned")):
+        file = open("learned/"+FILE_NAME+".learned", "r", encoding='UTF-8') 
         proba = eval(file.read())
         file.close()
         return proba
@@ -46,11 +55,11 @@ if(__name__ == "__main__"):
     os.chdir(os.getcwd()+'/python/fun/statistique_texte')
     texte = open("train_mot/"+FILE_NAME, mode='r', encoding='UTF-8')
     if(search_data() == {}):
-        proba = get_world_probability(texte.read())
         print("Working...")
+        proba = get_world_probability(texte.read())
     else:
-        proba = search_data()
         print("Reading File...")
+        proba = search_data()
     print("Done.")
     save_data(proba)
     phrase = list(proba)[random.randint(0, len(proba)-5)]
