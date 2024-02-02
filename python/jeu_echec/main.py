@@ -133,6 +133,7 @@ class Game(tk.Tk):
                             continue
                     except:
                         print("Out Range")
+                        continue
                 for move in LISTE_PIECE[TABLEAU[caseY][caseX].split("_")[0]]:
                         if(type(move) == str):
                             newCaseX = eval(move.split(";")[0])
@@ -260,7 +261,7 @@ class Game(tk.Tk):
 
 if __name__ == "__main__":
     #IP_ADRR = simpledialog.askstring("IP Adresse", "Veuillez entrer l'IP de votre adversaire")
-    THEME = int(simpledialog.askstring("Thème", "Veuillez un nombre entre 1 et 5"))
+    THEME = int(simpledialog.askstring("Thème", "Veuillez un de thème suivant (1)-5)\n\t1: Safran\n\t2: Bois\n\t3: Bleuté\n\t4:Jaune\n\t5: Emmeraude"))
     if THEME > 6 or THEME < 1:
         THEME = 1
     app = Game()
