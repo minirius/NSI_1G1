@@ -1,6 +1,7 @@
 import time
 import tkinter as tk
 from tkinter import simpledialog
+from tkinter import messagebox
 
 SIZE=80
 TABLEAU = [["" for j in range(8)] for i in range(8)]
@@ -261,6 +262,14 @@ class Game(tk.Tk):
 
 if __name__ == "__main__":
     #IP_ADRR = simpledialog.askstring("IP Adresse", "Veuillez entrer l'IP de votre adversaire")
+    ROOM = messagebox.askyesnocancel("Game", "Yes : Créer une partie\nNo: Rejoindre une partie")
+    if(ROOM == None):
+        quit()
+    elif(ROOM):
+        ...
+    else:
+        ...
+
     THEME = int(simpledialog.askstring("Thème", "Veuillez un de thème suivant (1)-5)\n\t1: Safran\n\t2: Bois\n\t3: Bleuté\n\t4:Jaune\n\t5: Emmeraude"))
     if THEME > 6 or THEME < 1:
         THEME = 1
