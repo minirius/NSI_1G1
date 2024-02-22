@@ -5,6 +5,7 @@ from tkinter import messagebox
 
 SIZE=80
 TABLEAU = [["" for j in range(8)] for i in range(8)]
+THEME=0
 LISTE_PIECE = {
     "tour" : [
         [f"caseX-{i+1};caseY" for i in range(8)],
@@ -166,6 +167,10 @@ class Game(tk.Tk):
             self.possibilities = []
             self.oldPos = (caseX, caseY)
             self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="chartreuse1", width=6)
+            if(self.tour == 0 and "noir" in TABLEAU[caseY][caseX]):
+                return                
+            if(self.tour == 7 and "blanc" in TABLEAU[caseY][caseX]):
+                return                
             if("pion" in TABLEAU[caseY][caseX]):
                 newCaseX, newCaseY = caseX, caseY-1
                 self.placePoint(newCaseX, newCaseY)
