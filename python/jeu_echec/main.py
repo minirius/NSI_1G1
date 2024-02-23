@@ -122,13 +122,17 @@ class Game(tk.Tk):
                     continue
                 if("pion" in TABLEAU[caseY][caseX]):
                     try:
-                        if("roi" in TABLEAU[caseY-1][caseX-1] and self.tour == 0):
+                        if("roi_noir" in TABLEAU[caseY-1][caseX-1] and self.tour == 0):
+                            self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="red", width=6)
                             return True
-                        elif("roi" in TABLEAU[caseY-1][caseX+1] and self.tour == 0):
+                        elif("roi_noir" in TABLEAU[caseY-1][caseX+1] and self.tour == 0):
+                            self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="red", width=6)
                             return True
-                        elif("roi" in TABLEAU[caseY+1][caseX-1] and self.tour == 7):
+                        elif("roi_blanc" in TABLEAU[caseY+1][caseX-1] and self.tour == 7):
+                            self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="red", width=6)
                             return True
-                        elif("roi" in TABLEAU[caseY+1][caseX+1] and self.tour == 7):
+                        elif("roi_blanc" in TABLEAU[caseY+1][caseX+1] and self.tour == 7):
+                            self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="red", width=6)
                             return True
                         else:
                             continue
@@ -141,10 +145,14 @@ class Game(tk.Tk):
                             newCaseY = eval(move.split(";")[1])
                             if(0 > newCaseX or newCaseX > 7 or 0 > newCaseY or newCaseY > 7):
                                 continue
-                            if("roi" in TABLEAU[newCaseY][newCaseX]):
+                            if("roi_blanc" in TABLEAU[newCaseY][newCaseX] and self.tour == 7):
+                                self.canvas.create_rectangle((newCaseX*SIZE+3, newCaseY*SIZE+3), ((newCaseX+1)*SIZE-3, (newCaseY+1)*SIZE-3), outline="red", width=6)
+                                return True
+                            if("roi_noir" in TABLEAU[newCaseY][newCaseX] and self.tour == 0):
+                                self.canvas.create_rectangle((newCaseX*SIZE+3, newCaseY*SIZE+3), ((newCaseX+1)*SIZE-3, (newCaseY+1)*SIZE-3), outline="red", width=6)
                                 return True
                         else:
-                            for sub_move in move:
+                            """for sub_move in move:
                                 newCaseX = eval(sub_move.split(";")[0])
                                 newCaseY = eval(sub_move.split(";")[1])
                                 if(0 > newCaseX or newCaseX > 7 or 0 > newCaseY or newCaseY > 7):
@@ -153,7 +161,8 @@ class Game(tk.Tk):
                                     continue
                                 elif("roi" in TABLEAU[newCaseY][newCaseX]):
                                     return True
-                                break
+                                break"""
+        return False
         
     def clickHandler(self, event):
         self.drawScreen()
@@ -166,6 +175,10 @@ class Game(tk.Tk):
             self.possibilities = []
             self.oldPos = (caseX, caseY)
             self.canvas.create_rectangle((caseX*SIZE+3, caseY*SIZE+3), ((caseX+1)*SIZE-3, (caseY+1)*SIZE-3), outline="chartreuse1", width=6)
+            if("noir" in TABLEAU[caseY][caseX] and self.tour == 0):
+                return 
+            if("blanc" in TABLEAU[caseY][caseX] and self.tour == 7):
+                return
             if("pion" in TABLEAU[caseY][caseX]):
                 newCaseX, newCaseY = caseX, caseY-1
                 self.placePoint(newCaseX, newCaseY)
@@ -223,8 +236,9 @@ class Game(tk.Tk):
                 TABLEAU[caseY][caseX] = TABLEAU[self.oldPos[1]][self.oldPos[0]]
                 TABLEAU[self.oldPos[1]][self.oldPos[0]] = ""
                 self.drawScreen()
-                print(self.check_for_check())
-                self.after(500, self.flip_tableau)
+                if(self.check_for_check()):
+                    ...
+                else: self.after(500, self.flip_tableau)
 
             self.click_state = "unselected"
             self.possibilities = []
@@ -270,7 +284,8 @@ if __name__ == "__main__":
     else:
         ...
 
-    THEME = int(simpledialog.askstring("Thème", "Veuillez un de thème suivant (1)-5)\n\t1: Safran\n\t2: Bois\n\t3: Bleuté\n\t4:Jaune\n\t5: Emmeraude"))
+    #THEME = int(simpledialog.askstring("Thème", "Veuillez un de thème suivant (1)-5)\n\t1: Safran\n\t2: Bois\n\t3: Bleuté\n\t4:Jaune\n\t5: Emmeraude"))
+    THEME = 2
     if THEME > 6 or THEME < 1:
         THEME = 1
     app = Game()
