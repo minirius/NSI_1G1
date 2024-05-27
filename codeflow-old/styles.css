@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* total width */
+body::-webkit-scrollbar {
+    background-color: #000;
+    width: 16px;
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+background-color: rgb(80, 80, 80);
+    border-radius: 16px;
+    border: 4px solid #000;
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+    display:none;
+}
+
+.sidebar {
+    display: inline-block;
+    position: fixed;
+    transition: 0.5s ease-in-out;
+    left:-100vw;
+    top:0px;
+    width: 70vw;
+    height: 100vh;
+    padding: 20px;
+    padding-top: 50px;
+    background-color: rgb(40, 40, 40);
+    z-index: 101;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    z-index:100;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.2s ease-in-out;
+}
+
+.sidebar>h3 {
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+.sidebar>ion-icon {
+    position: absolute;
+    top:30px;
+    right:30px;
+    font-size: 30px;
+}
+
+.sidebar>a {
+    display: block;
+    margin-top: 10px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: black;
+    color: rgb(220, 220, 220);
+    max-width: 100vw;
+}
+
+.navbar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    top:0px;
+    padding:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:calc( 100vw - 40px );
+    z-index: 99;
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.85));
+    z-index:98;
+}
+
+.headerLinks {
+    padding-left: 50px;
+}
+
+.leftHeader {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: calc(50vw - 20px);
+}
+.leftHeader>ion-icon {
+    font-size: 20px;
+    display: none;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(220, 220, 220);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.link>ion-icon {
+    font-size: 20px;
+}
+.link:hover {
+    color: blueviolet;
+}
+/*
+.headerSelect {
+    display: inline-block;
+    height: 5px;
+    width: 100%;
+    background-color: red;
+    border-radius: 5px;
+}
+*/
+.rightHeader {
+    width: calc(50vw - 20px);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.rightHeader>ion-icon {
+    font-size: 20px;
+    display: none;
+    margin-right: 0px;
+    margin-left: 20px;
+}
+#headerIcon {
+    height: 55px;
+    width: 80px;
+}
+
+.main {
+    background-color: black;
+    z-index:50;
+}
+
+.searchBar {
+    background-color: rgb(40, 40, 40);
+    border: 1px solid black;
+    color: rgb(220, 220, 220);
+    width: 30vw;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.searchBar:focus {
+    outline-width: 0px;
+}
+
+.title {
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.tendances {
+    padding: 30px;
+    margin-bottom:0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.videoContainer>img {
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 16/ 9;
+    object-fit: cover;
+}
+
+.videoContainer>video {
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 16/ 9;
+    object-fit: cover;
+    display: none;
+}
+
+.videoContainer>h5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: 0.1s ease-in-out;
+}
+
+.videoContainer>.timecode {
+    transition: 0.1s ease-in-out;
+    position:absolute;
+    right: 25px;
+    bottom: 100px;
+    background-color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 4px;
+}
+
+.videoContainer>p {
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    font-size: smaller;
+    white-space: nowrap;
+}
+
+.videoContainer {
+    transition: 0.2s ease-in-out;
+    background-color: black;
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    margin: 8px;
+    padding: 8px;
+    width: 300px;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    flex: 1 1 auto;
+    cursor: pointer;
+}
+
+.videoContainer:hover > h5 {
+    color: blueviolet;
+}
+
+.videoContainer:hover {
+    z-index:80;
+    transform: scale(1.1);
+}
+
+.videoContainer > .progressbar {
+    position: absolute;
+    left:0px;
+    bottom:80px;
+    width: 100%;
+    height: 5px;
+    color: blueviolet;
+}
+
+a.videoContainer {
+    text-decoration: none;
+    color: inherit
+}
+
+@media only screen and (max-width: 1024px) {
+    .headerLinks {
+      display: none;
+    }
+    .leftHeader>ion-icon {
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 50px;
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .headerLinks {
+      display: none;
+    }
+    .leftHeader>ion-icon {
+        display: none;
+    }
+    .searchBar {
+        display: none;
+    }
+    .rightHeader>ion-icon {
+        display: inline-block;
+    }
+}
