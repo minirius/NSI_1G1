@@ -1,0 +1,80 @@
+
+
+body {
+	background-color:black; /*(Test 1)*/
+	color:white; /*(Test 2)*/
+	text-align:justify;	
+	font-size:16px; /* (Test 3) */ 
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+}	
+	
+p {
+	margin:0px;
+}
+	
+a:link{color: yellow;} /* Test 6 */
+a:visited {color: white;}
+	 
+.page{ /* Assure le centrage de la page */ 
+	width:922px; /*(Test 4a)*/
+	margin:0px auto; 
+	padding:5px;
+
+}
+
+/* -----------------En-tête de page   ---------------------*/
+/* --------------------------------------------------------*/
+.header{
+	padding-left:228px; /* Test 4b) */
+}
+
+/* ---------------- Contenu de la page --------------------*/
+/* --------------------------------------------------------*/
+.content{
+}
+
+.texte1{
+	padding:5px;
+	font-size:18px;
+}
+
+.image1{
+	display:inline-block;
+	vertical-align:top;
+	padding-right:5px;
+}
+
+.texte2{
+	padding: 10px 5px 5px 5px ; /* Test 5 */
+	display:inline-block;/*(Test 4c)*/
+	max-height:184px;
+	max-width:610px; 
+	vertical-align:center;
+}
+
+.texte3{
+	padding: 40px 10px 5px 5px;
+	max-width:572px;
+	display:inline-block;
+	vertical-align:top;
+}
+
+.image2{
+	display:inline-block;
+}
+
+.textecouleur{
+	color:#FFCC25;
+	font-weight:bold;
+	font-style:italic;
+}
+/* ---------------------Pied de page ----------------------*/
+/* --------------------------------------------------------*/
+.footer{
+	padding-top: 20px;
+	text-align:center;
+}
+
+.textfooter{
+	font-style:italic;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mon premier fichier HTML</title>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    #container {
+        width : 400px ;
+        height : 400px ;
+        position : relative ;
+        background : lightpink ;
+    }
+    #animate {
+        width : 50px ;
+        height : 50px ;
+        position : absolute ;
+        background-color : salmon ;
+    }
+  </style>
+  <body>
+    <p>
+      <button onclick=" myMove ()">Click Me</button>
+    </p>
+    <div id="container">
+      <div id="animate"></div>
+    </div>
+    <script>
+      function myMove () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var id = setInterval(frame, 5) ;
+        function frame() {
+            if(pos == 350*4) {
+                clearInterval(id);
+            }
+            if(pos < 350) {
+                pos++;
+                elem.style.left = pos + 'px';
+            }
+            if(350 <= pos && pos < 350*2) {
+                pos++;
+                elem.style.top = (pos-350) + 'px';
+            }
+            if(350*2 <= pos && pos < 350*3) {
+                pos++;
+                elem.style.left = (350*3-pos) + 'px';
+            }
+            if(350*3 <= pos && pos < 350*4) {
+                pos++;
+                elem.style.top = (350*4-pos) + 'px';
+            }
+        }
+      }
+    </script>
+  </body>
+</html>
