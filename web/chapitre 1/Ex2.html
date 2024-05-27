@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ex2</title>
+    <style>
+        .bloc {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .inline {
+            background-color: #e0e0e0;
+            padding: 10px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-    <form>
-        Nombre entier : <input name="nombre1" value="30"><br>
-        Nombre Réel : <input name="nombre2" value="10"><br>
-        <input type="button" value="Somme des 2 nombres" noclick="sommeNombre(this.form)"></input>
-        <p id="demo"></p>
-    </form>
+    <h1>Exercice bloc en ligne</h1>
+
+    <div class="bloc">
+        <h2>Boite Bloc</h2>
+        <p>Ceci est une boite bloc</p>
+        <p>Elle commence sur un ligne et occupe toute la largeur disponible</p>
+    </div>
+
+    <span class="inline">
+        <h2>Boite Inline</h2>
+        <p>Ceci est une boite en ligne</p>
+        <p>Elle commence sur un ligne et occupe seulement la largeur necessaire</p>
+    </span>
+
+    <span class="inline">
+        <h2>Boite Inline</h2>
+        <p>Une autre boite bloc</p>
+        <p>Elle se positione cote à cote avec la précédente</p>
+    </span>
 </body>
-<script>
-    
-</script>
 </html>

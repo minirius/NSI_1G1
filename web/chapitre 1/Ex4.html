@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2</title>
+</head>
+<body>
+    <form>
+        Calculer x^n :<br>
+        Nombre entier : <input name="nombre1" value="2"><br>
+        Nombre Réel : <input name="nombre2" value="2"><br>
+        <input type="button" value="Somme des 2 nombres" onclick="sommeNombre(this.form)"></input>
+        <p id="demo"></p>
+    </form>
+</body>
+<script>
+    function sommeNombre(monFormulaire) {
+        var entier1 = parseInt(monFormulaire.nombre1.value);
+        var entier2 = parseInt(monFormulaire.nombre2.value);
+        var somme = entier1**entier2;
+        document.getElementById ("demo").innerHTML=somme;
+    }
+</script>
+</html>
